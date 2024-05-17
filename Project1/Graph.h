@@ -23,6 +23,9 @@ public:
 	list<int> GetAdjList(int u);
 	void AddEdge(int u, int v);
 	void RemoveEdge(int u, int v);
+	Graph BuildTranspose();
+	//void graphPrint();
+	Graph Sharir_Kosaraju();
 };
 
 

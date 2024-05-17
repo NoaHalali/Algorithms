@@ -15,7 +15,7 @@ public:
 	list<int> GetNeighbors();
 	void AddNeighbor(int v);
 	void RemoveNeighbor(int v);
-
+	int GetNeighborinList();
 	bool IsNeighbor(int v);
 
 

@@ -7,7 +7,7 @@ void Graph:: MakeEmptyGraph(int n)
 	numVertices = n+1; //first is a dummy element
 	numEdges = 0;
 	adjencyLists.resize(n+1);
-	for (int i = 0; i < n + 1; i++)
+	for (int i = 1; i <= n; i++)
 	{
 		adjencyLists[i].SetVal(i);
 		//adjencyLists[i] = Vertex(i);
@@ -39,4 +39,37 @@ void Graph:: AddEdge(int u, int v)
 void Graph:: RemoveEdge(int u, int v)
 {
 	adjencyLists[u].RemoveNeighbor(v);
+} 
+
+Graph Graph:: BuildTranspose()
+{
+	Graph transpose;
+	transpose.MakeEmptyGraph(numVertices);
+
+	for(int vertex = 1; vertex < numVertices; vertex++)
+	{
+		list<int> currNeighborList = adjencyLists[vertex].GetNeighbors();
+		for (int neighbor : currNeighborList)
+		{
+			transpose.adjencyLists[neighbor].AddNeighbor(vertex);
+		}
+	}
+	return transpose;
 }
+
+Graph Graph::Sharir_Kosaraju()
+{
+	Graph transpose;
+	list<int> endList, reversedEndList;
+	//int* arr = new int[n]();
+	//vector<int> arr(n);
+	this->DFS();
+	transpose = this->BuildTranspose();
+	reversedEndList = endList;
+	reversedEndList.reverse();
+	transpose.DFS();
+
+	
+}
+
+void
