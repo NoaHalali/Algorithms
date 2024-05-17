@@ -1,39 +1,42 @@
 #include "Graph.h"
+#include "Vertex.h"
 #include <algorithm>
 
 void Graph:: MakeEmptyGraph(int n)
 {
 	numVertices = n+1; //first is a dummy element
 	numEdges = 0;
-	adjencyList.resize(n+1);
-	//vector<list<Vertex>> adjencyList(10);
-	//adjencyList[0];
-	//for (int i = 0; i < numVertices; i++)
-	//{
-	//	adjencyList[i] 
-	//}
+	adjencyLists.resize(n+1);
+	for (int i = 0; i < n + 1; i++)
+	{
+		adjencyLists[i].SetVal(i);
+		//adjencyLists[i] = Vertex(i);
+	}
 }
 
-bool Graph::IsAdjacent(Vertex u, Vertex v)
+bool Graph::IsAdjacent(int u, int v)
 {
-	//adjencyList[u.getVal()];
-	// Vertex found = find(adjencyList[u.getVal()].begin(), adjencyList[u.getVal()].end(), v);
-	//bool flag = (find(adjencyList[u.getVal()].begin(), adjencyList[u.getVal()].end(), v) == adjencyList[u.getVal()].end());
-
-	
+	if (adjencyLists[u].IsNeighbor(v))
+	{
+		return true;
+	}
+	return false;
 }
 
-list<Vertex> Graph::GetAdjList(Vertex u)
+list<int> Graph::GetAdjList(int u)
 {
-	return adjencyList[u.getVal()];
+	return adjencyLists[u].GetNeighbors();
 }
 
-void Graph:: AddEdge(Vertex u, Vertex v)
+void Graph:: AddEdge(int u, int v)
 {
-	adjencyList[u.getVal()].push_back(v);
+
+	adjencyLists[u].AddNeighbor(v);
+		
+	//adjencyLists[u.getVal()].push_back(v);
 }
 
-void Graph:: RemoveEdge(Vertex u, Vertex v)
+void Graph:: RemoveEdge(int u, int v)
 {
-	adjencyList[u.getVal()].remove(v);
+	adjencyLists[u].RemoveNeighbor(v);
 }

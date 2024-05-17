@@ -14,14 +14,15 @@ class Graph
 {
 	int numVertices;
 	int numEdges;
-	vector< list<Vertex> > adjencyList;
+	vector<Vertex> adjencyLists;
+	//vector< list<Vertex> > adjencyList;
 
 public:
 	void MakeEmptyGraph(int n);
-	bool IsAdjacent(Vertex u, Vertex v);
-	list<Vertex> GetAdjList(Vertex u);
-	void AddEdge(Vertex u, Vertex v);
-	void RemoveEdge(Vertex u, Vertex v);
+	bool IsAdjacent(int u, int v);
+	list<int> GetAdjList(int u);
+	void AddEdge(int u, int v);
+	void RemoveEdge(int u, int v);
 };
 
 

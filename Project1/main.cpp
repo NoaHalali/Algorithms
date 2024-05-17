@@ -26,6 +26,6 @@ void main()
 		cout << "To: ";
 		cin >> v;
 
-		graph.AddEdge(u,v) //create vertexes
+		graph.AddEdge(u, v); //create vertexes
 	}
 }
