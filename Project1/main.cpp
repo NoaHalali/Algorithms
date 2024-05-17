@@ -29,5 +29,5 @@ void main()
 		graph.AddEdge(u, v); //create vertexes
 	}
 	transpose = graph.BuildTranspose();
-	cout << "heloo";
+	cout << "hello";
 }
