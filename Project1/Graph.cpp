@@ -1,8 +1,22 @@
 #include "Graph.h"
 #include "Vertex.h"
 #include <algorithm>
+#include <string>
 
-void Graph:: MakeEmptyGraph(int n)
+//#define WHITE 0
+//#define GRAY 1
+//#define BLACK 2
+
+int Graph::getNumVertices()
+{
+	return numVertices;
+}
+int Graph::getNumEdges()
+{
+	return numEdges;
+}
+
+void Graph::MakeEmptyGraph(int n)
 {
 	numVertices = n+1; //first is a dummy element
 	numEdges = 0;
@@ -28,7 +42,7 @@ list<int> Graph::GetAdjList(int u)
 	return adjencyLists[u].GetNeighbors();
 }
 
-void Graph:: AddEdge(int u, int v)
+void Graph::AddEdge(int u, int v)
 {
 
 	adjencyLists[u].AddNeighbor(v);
@@ -36,12 +50,12 @@ void Graph:: AddEdge(int u, int v)
 	//adjencyLists[u.getVal()].push_back(v);
 }
 
-void Graph:: RemoveEdge(int u, int v)
+void Graph::RemoveEdge(int u, int v)
 {
 	adjencyLists[u].RemoveNeighbor(v);
 } 
 
-Graph Graph:: BuildTranspose()
+Graph Graph::BuildTranspose()
 {
 	Graph transpose;
 	transpose.MakeEmptyGraph(numVertices);
@@ -57,21 +71,21 @@ Graph Graph:: BuildTranspose()
 	return transpose;
 }
 
-Graph Graph::Sharir_Kosaraju(Graph& superGraph)
+void Graph::Sharir_Kosaraju(Graph& superGraph)
 {
-	Graph transpose, superGraph;
+	Graph transpose;
 	list<int> endList, reversedEndList;
 	//int* arr = new int[n]();
 	//vector<int> arr(n);
 	
-	//DFS on G that returns end list of vertices
+	//DFS on G that returns the end list of the vertices
 	this->endListVersionDFS(endList);
 	//build G transpose
 	transpose = this->BuildTranspose();
 	
 	reversedEndList = endList;
 	reversedEndList.reverse();
-	//DFS on G transpose that returns the DFS trees
+	//DFS on G transpose with maintenance of tree roots
 	// אולי להחזיר אותם בתור מערך שבו כל קודקוד יודע לאיזה רכיב קשירות/שורש של עץ הוא שייך בטרנספוז
 	// וזה בעצם מחלק אותם לרק"חים  
 	transpose.treesVersionDFS(reversedEndList, superGraph);
@@ -79,25 +93,57 @@ Graph Graph::Sharir_Kosaraju(Graph& superGraph)
 
 void Graph::endListVersionDFS(list<int>& endList)
 {
-	vector<string> colors;
-	colors.resize(10);
+	vector<string> colors(numVertices);
+	init(colors);
 
-	//init
-	for (string color : colors)
+	//main-loop 1,2,3..,n
+	for (int i = 1; i <= numVertices; i++)
 	{
-		color = "White";
+		if (colors[i] == "white")
+		{
+			visit(i, endList, colors);
+		}
 	}
-
-	//main-loop
-	for (ver)
 }
-
 
 void Graph::treesVersionDFS(list<int> mainLoop, Graph& superGraph)
 {
+	vector<string> colors(numVertices);
+	init(colors);
+
 	/*בכל פעם שהאלגוריתם מתחיל לייצר עץ, העץ מייצג רק"ח כלומר קדקוד בגרף העל.
 	  נוסיף קדקוד זה למערך הקדקודים של גרף העל
 		superGraph.addVertex(i);
 	*/
+	vector<int> rootsArr(numVertices);
 
+
+
+}
+
+//maybe DFS class and then no need to give parameters every time?
+void Graph::visit(int u, list<int>& endList, vector<string>& colors)
+{
+	list<int> neighbors = GetAdjList(u);
+	colors[u] = "gray";
+
+	for (int vertex : neighbors)
+	{
+		if (colors[vertex] == "white")
+		{
+			visit(vertex, endList, colors);
+		}
+	}
+
+	colors[u] = "black";
+	endList.push_back(u);
+}
+
+
+void Graph::init(vector<string>& colors)
+{
+	for (string color : colors)
+	{
+		color = "White";
+	}
 }

@@ -25,10 +25,14 @@ public:
 	void RemoveEdge(int u, int v);
 	Graph BuildTranspose();
 	//void graphPrint();
-	Graph Sharir_Kosaraju(Graph& superGraph);
+	void Sharir_Kosaraju(Graph& superGraph);
 	void endListVersionDFS(list<int>& endList);
 	void treesVersionDFS(list<int> mainLoop, Graph& superGraph);
-};
+	int getNumVertices();
+	int getNumEdges();
+	void visit(int u, list<int>& endList, vector<string>& colors);
+	void init(vector<string>& colors);
 
+};
 
 #endif

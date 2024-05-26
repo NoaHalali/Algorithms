@@ -38,5 +38,5 @@ void main()
 	//transpose = graph.BuildTranspose();
 
 	graph.Sharir_Kosaraju(superGraph);
-	
+	cout << superGraph.getNumVertices() << " " << superGraph.getNumEdges();
 }
