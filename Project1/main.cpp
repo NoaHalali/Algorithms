@@ -15,7 +15,7 @@ void main()
 {
 	int numVertices;
 	int numEdges;
-	Graph graph, transpose;
+	Graph graph, superGraph /*,transpose*/;
 	//להוריד את ההדפסות אח"כ
 	cout << "Enter number of vertices: ";
 	cin >> numVertices;
@@ -35,5 +35,8 @@ void main()
 
 		graph.AddEdge(u, v); //create vertexes
 	}
-	transpose = graph.BuildTranspose();
+	//transpose = graph.BuildTranspose();
+
+	graph.Sharir_Kosaraju(superGraph);
+	
 }

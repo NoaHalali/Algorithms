@@ -57,19 +57,47 @@ Graph Graph:: BuildTranspose()
 	return transpose;
 }
 
-Graph Graph::Sharir_Kosaraju()
+Graph Graph::Sharir_Kosaraju(Graph& superGraph)
 {
-	Graph transpose;
+	Graph transpose, superGraph;
 	list<int> endList, reversedEndList;
 	//int* arr = new int[n]();
 	//vector<int> arr(n);
-	this->DFS();
+	
+	//DFS on G that returns end list of vertices
+	this->endListVersionDFS(endList);
+	//build G transpose
 	transpose = this->BuildTranspose();
+	
 	reversedEndList = endList;
 	reversedEndList.reverse();
-	transpose.DFS();
-
-	
+	//DFS on G transpose that returns the DFS trees
+	// אולי להחזיר אותם בתור מערך שבו כל קודקוד יודע לאיזה רכיב קשירות/שורש של עץ הוא שייך בטרנספוז
+	// וזה בעצם מחלק אותם לרק"חים  
+	transpose.treesVersionDFS(reversedEndList, superGraph);
 }
 
-void
+void Graph::endListVersionDFS(list<int>& endList)
+{
+	vector<string> colors;
+	colors.resize(10);
+
+	//init
+	for (string color : colors)
+	{
+		color = "White";
+	}
+
+	//main-loop
+	for (ver)
+}
+
+
+void Graph::treesVersionDFS(list<int> mainLoop, Graph& superGraph)
+{
+	/*בכל פעם שהאלגוריתם מתחיל לייצר עץ, העץ מייצג רק"ח כלומר קדקוד בגרף העל.
+	  נוסיף קדקוד זה למערך הקדקודים של גרף העל
+		superGraph.addVertex(i);
+	*/
+
+}

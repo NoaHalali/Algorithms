@@ -25,7 +25,9 @@ public:
 	void RemoveEdge(int u, int v);
 	Graph BuildTranspose();
 	//void graphPrint();
-	Graph Sharir_Kosaraju();
+	Graph Sharir_Kosaraju(Graph& superGraph);
+	void endListVersionDFS(list<int>& endList);
+	void treesVersionDFS(list<int> mainLoop, Graph& superGraph);
 };
 
 
