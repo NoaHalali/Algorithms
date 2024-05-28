@@ -15,7 +15,6 @@ class Graph
 	int numVertices;
 	int numEdges;
 	vector<Vertex> adjencyLists;
-	//vector< list<Vertex> > adjencyList;
 
 public:
 	void MakeEmptyGraph(int n=0);
@@ -24,14 +23,13 @@ public:
 	void AddEdge(int u, int v);
 	void RemoveEdge(int u, int v);
 	Graph BuildTranspose();
-	//void graphPrint();
 	void Sharir_Kosaraju(Graph& superGraph);
 	void endListVersionDFS(list<int>& endList);
 	void treesVersionDFS(list<int> mainLoop, Graph& superGraph);
 	int getNumVertices();
 	int getNumEdges();
 	void visitEndListDFS(int u, list<int>& endList, vector<int>& colors);
-	void visitTreesDFS(int u, int currentRoot, vector<int>& rootsArr, 
+	void visitTreesDFS(int u, int currentComponent, vector<int>& rootsArr,
 		vector<int>& colors, Graph& superGraph);
 	void init(vector<int>& colors);
 	bool isAdjacentInSuperGraph(int u, int v);
