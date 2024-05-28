@@ -10,6 +10,7 @@ void Vertex::SetVal(int val)
 {
 	value = val;
 }
+
 list<int> Vertex::GetNeighbors()
 {
 	return neighbors;
@@ -44,3 +45,7 @@ int Vertex::getLastNeighborInList()
 	return neighbors.back();
 }
 
+bool Vertex::isEmptyNeighborsList()
+{
+	return neighbors.empty();
+}

@@ -145,7 +145,7 @@ void Graph::visitTreesDFS(int u, int currentRoot, vector<int>& rootsArr ,
 		}
 		else if (rootsArr[vertex] != currentRoot)
 		{
-			if (!isAdjacentInSuperGraph(rootsArr[vertex], currentRoot))
+			if (!superGraph.isAdjacentInSuperGraph(rootsArr[vertex], currentRoot))
 			{
 				superGraph.AddEdge(rootsArr[vertex], currentRoot);
 			}
@@ -184,9 +184,18 @@ void Graph::init(vector<int>& colors)
 
 bool Graph::isAdjacentInSuperGraph(int u, int v)
 {
-	int lastNeighborOfV = adjencyLists[v].getLastNeighborInList();
-	bool res = lastNeighborOfV == u;
-	return res;
+	bool isAdjacent;
+	if (adjencyLists[u].isEmptyNeighborsList())
+	{
+		isAdjacent = false;
+	}
+	else
+	{
+		int lastNeighborOfU = adjencyLists[u].getLastNeighborInList();
+		isAdjacent = (lastNeighborOfU == v);
+	}
+	
+	return isAdjacent;
 }
 
 void Graph::addVertex(int u)

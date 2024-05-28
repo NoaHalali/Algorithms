@@ -16,10 +16,10 @@ public:
 	list<int> GetNeighbors();
 	void AddNeighbor(int v);
 	void RemoveNeighbor(int v);
-	int GetNeighborinList();
+	//int GetNeighborinList();
 	bool IsNeighbor(int v);
 	int getLastNeighborInList();
-
+	bool isEmptyNeighborsList();
 };
 
 #endif // ! 
