@@ -39,3 +39,8 @@ void Vertex::RemoveNeighbor(int v)
 	this->neighbors.remove(v);
 }
 
+int Vertex::getLastNeighborInList()
+{
+	return neighbors.back();
+}
+

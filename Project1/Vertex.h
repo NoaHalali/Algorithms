@@ -9,7 +9,8 @@ class Vertex
 	list<int> neighbors;
 
 public:
-	//Vertex(int _value) { value = _value; }
+	Vertex() {}
+	Vertex(int _value) { value = _value; }
 	int GetVal();
 	void SetVal(int val);
 	list<int> GetNeighbors();
@@ -17,7 +18,7 @@ public:
 	void RemoveNeighbor(int v);
 	int GetNeighborinList();
 	bool IsNeighbor(int v);
-
+	int getLastNeighborInList();
 
 };
 

@@ -24,19 +24,16 @@ void main()
 
 	graph.MakeEmptyGraph(numVertices);
 	cout << "Enter " << numEdges << " edges:" << endl;
-	for (int i = 1; i <= numEdges; i++)
-	{
+	for (int i = 0; i < numEdges; ++i) {
 		int u, v;
-		cout << "Enter edge " << i <<endl;
-		cout << "From: ";
-		cin >> u;
-		cout << "To: ";
-		cin >> v;
-
-		graph.AddEdge(u, v); //create vertexes
+		std::cout << "Enter edge " << i + 1 << std::endl;
+		std::cin >> u;
+		std::cin >> v;
+		graph.AddEdge(u, v);
 	}
-	//transpose = graph.BuildTranspose();
 
+	//transpose = graph.BuildTranspose();
+	superGraph.MakeEmptyGraph();
 	graph.Sharir_Kosaraju(superGraph);
 	cout << superGraph.getNumVertices() << " " << superGraph.getNumEdges();
 }

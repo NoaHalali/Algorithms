@@ -18,7 +18,7 @@ class Graph
 	//vector< list<Vertex> > adjencyList;
 
 public:
-	void MakeEmptyGraph(int n);
+	void MakeEmptyGraph(int n=0);
 	bool IsAdjacent(int u, int v);
 	list<int> GetAdjList(int u);
 	void AddEdge(int u, int v);
@@ -30,8 +30,12 @@ public:
 	void treesVersionDFS(list<int> mainLoop, Graph& superGraph);
 	int getNumVertices();
 	int getNumEdges();
-	void visit(int u, list<int>& endList, vector<string>& colors);
-	void init(vector<string>& colors);
+	void visitEndListDFS(int u, list<int>& endList, vector<int>& colors);
+	void visitTreesDFS(int u, int currentRoot, vector<int>& rootsArr, 
+		vector<int>& colors, Graph& superGraph);
+	void init(vector<int>& colors);
+	bool isAdjacentInSuperGraph(int u, int v);
+	void addVertex(int u);
 
 };
 
