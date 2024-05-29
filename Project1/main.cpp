@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Graph.h"
-//#include "Exception.h"
 using namespace std; 
 
 void validateInput(int numVertices, int numEdges);
