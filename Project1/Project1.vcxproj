@@ -132,6 +132,7 @@
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Exception.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
